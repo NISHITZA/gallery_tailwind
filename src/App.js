@@ -3,7 +3,15 @@ import React, { useState, useEffect} from 'react';
 function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [term, setTerm] = useState('')
+  const [term, setTerm] = useState('');
+
+  useEffect(()=>{
+    //https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo
+    fetch(`https://pixabay.com/api/?key=19256212-e3fbe15d3b137a71c410dc89e&q=yellow+flowers&image_type=photo`)
+      .then(res=> res.json())
+      .then(data =>console.log(data))
+      .catch(err =>console.log(err))
+  })
 
 
   return (
